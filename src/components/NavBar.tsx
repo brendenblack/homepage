@@ -10,7 +10,7 @@ export default function NavBar() {
     const activeLinkClasses = "text-indigo-400 border-indigo-400";
 
     return (
-        <header className="bg-gray-900">
+        <header className="bg-gray-900 z-10">
             <div className="container mx-auto flex justify-between text-gray-300">
                 <nav>
                     <NavLink to={`${routePrefix}`} 

@@ -3,12 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import ComingSoonPage from './ComingSoonPage';
-import Home from './components/Home';
-import Project from './components/Project';
-import About from './components/About';
-import ProjectList from './components/ProjectList';
 
 ReactDOM.render(
   <React.StrictMode>
