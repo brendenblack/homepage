@@ -1,0 +1,21 @@
+/* 
+
+.image {
+    background-image: url("../images/blackbox.jpeg");
+} */
+
+
+
+@media (min-width: 1024px) {
+    .home-name {
+        font-size: 150px;
+        font-family: 'Staatliches'
+    }
+ }
+
+.swan-background {
+    background-image: url("../images/black-swan-2103586_1920.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right center;
+}
