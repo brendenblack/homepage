@@ -1,63 +1,57 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import sanityClient from "../client";
 import './About.css';
-import image from "../blackbox.jpeg"; 
 import BlockContent from '@sanity/block-content-to-react';
-import imageUrlBuilder from "@sanity/image-url";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import betOnBlack from "../betonblack.jpg";
-
-const builder = imageUrlBuilder(sanityClient);
-function urlFor(source: SanityImageSource) {
-    return builder.image(source);
-}
 
 export default function About() {
-    const [ author, setAuthor ] = useState<any | null>(null);
+    const [ aboutSections, setAboutSections ] = useState<[]>([]);
+    
     useEffect(() => {
-        sanityClient.fetch(`*[_type == "author"]{
-            name,
-            bio,
-            "authorImage": image.asset->url
+        sanityClient.fetch(`*[_type == "about"]{
+            title,
+            slug,
+            content,
+            orderWeight
         }`)
         .then((data) => {
-            console.log('data', data);
-            setAuthor(data[0]);
-            console.log('author',author);
+            console.log('about sections', data);
+            setAboutSections(data.sort((a: {orderWeight: number}, b: { orderWeight: number }) => a.orderWeight > b.orderWeight));
         })
         .catch(console.error);
     }, []);
-    const snipes = true;
 
-    if (snipes) {
-        return (
-            <main className="w-full bg-black flex-grow flex justify-center"> 
-                    <img src={betOnBlack} className="inline-block object-cover" style={{ width: 592, height: 333 }} />
-            </main>
-        )
-    } else {
-        
-
-        if (!author) {
-            return <div>Loading...</div>
-        }
-
-        return (
-            <main className="flex-grow">
-                <img src={image} alt="black box" className="absolute w-full" />
-                <div className="p-10 lg:pt-48 container mx-auto relative">
-                    <section className="bg-gray-700 rounded-lg shadow-2xl lg:flex p-20">
-                        <img src={urlFor(author.authorImage).url() || undefined} className="ronded w-32 h-32 lg:w-64 lg:h-64" />
-                        <div className="text-lg flex flex-col justify-center">
-                            <h1 className="text-6xl text-indigo-400 mb-4">{author.name}</h1>
-                            <div className="prose lg:prose-xl text-white">
-                                <BlockContent blocks={author.bio} projectId={process.env.REACT_APP_PROJECT_ID} dataset="production" />
-                            </div>
-                        </div>
-                    </section>
+    return (
+        <div className="page bg-gray-200 pt-8">
+            <div className="container mx-auto">
+                <header>
+                    <h1 className="text-5xl branding-text text-gray-700">About me &amp; thoughts</h1>
+                </header>
+                <div className=" flex flex-row">
+                    <nav className="h-full sticky top-0 p-8 bg-indigo-50 border rounded-sm border-grey-500 shadow-xl flex flex-col mt-8 ">
+                        <ol className="space-y-8">
+                        {aboutSections.map((section: any, index: number) => {
+                            return (
+                                <li key={index}><a href={`#${section.slug.current}`} className="text-gray-800 hover:text-white font-mono font-bold">{section.title}</a></li>
+                            );
+                        })}
+                        </ol>
+                    </nav>
+                    <main className="ml-16 mt-8 flex-grow space-y-12">
+                        {aboutSections.map((section: any, index) => {
+                            return (
+                                <article id={section.slug.current} key={index}>
+                                    <header>
+                                        <h2 className="text-2xl text-gray-700 branding-text">{section.title}</h2>
+                                    </header>
+                                    <section className="prose max-w-3xl">
+                                        <BlockContent blocks={section.content} projectId={process.env.REACT_APP_PROJECT_ID} dataset="production" />
+                                    </section>
+                                </article>
+                            );
+                        })}
+                    </main>
                 </div>
-            </main>
-        );
-    }
-    
+            </div>
+        </div>
+    );    
 }

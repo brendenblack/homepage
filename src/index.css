@@ -8,6 +8,12 @@
     border-radius: 5px;
 }
 
-.home-name {
-    font-size: 150px;
+@import url('https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&family=Quicksand:wght@600&family=Staatliches&display=swap');
+.branding-text {
+    font-family: "Staatliches";
+}
+
+.page {
+    margin-top: 56px;
+    flex-grow: 1;
 }

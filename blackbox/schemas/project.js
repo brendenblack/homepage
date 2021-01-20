@@ -5,19 +5,50 @@ export default {
     fields: [
         {
             name: "title",
+            title: "Title",
             type: "string",
+            validation: Rule => Rule.required()
         },
         {
-            name: "date",
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+              source: 'title',
+              maxLength: 96,
+            },
+            validation: Rule => Rule.required()
+        },
+        {
+            name: "startDate",
+            title: "Start date",
             type: "datetime",
+            description: "When the project was undertaken",
+            validation: Rule => Rule.required()
+        },
+        {
+            name: "endDate",
+            title: "End date",
+            type: "datetime",
+            description: "When the project was completed (leave blank for ongoing)"
         },
         {
             name: "place",
+            title: "Place",
             type: "string"
         },
         {
+            name: "summary",
+            title: "Summary",
+            type: 'blockContent',
+            description: "A brief description of the project",
+            validation: Rule => Rule.required()
+        },
+        {
             name: "description",
-            type: "text"
+            title: "Project description",
+            type: 'blockContent',
+            description: "A thorough write up of the project"
         },
         {
             name: "projectType",
@@ -45,6 +76,12 @@ export default {
             options: {
                 layout: "tags",
             }
-        }
+        },
+        {
+            name: 'disclaimer',
+            title: 'Disclaimer',
+            type: 'reference',
+            to: {type: 'disclaimer'},
+          }
     ]
 }
