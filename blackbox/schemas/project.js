@@ -10,6 +10,11 @@ export default {
             validation: Rule => Rule.required()
         },
         {
+            name: 'icon',
+            title: 'Icon',
+            type: 'image',
+        },
+        {
             name: 'slug',
             title: 'Slug',
             type: 'slug',

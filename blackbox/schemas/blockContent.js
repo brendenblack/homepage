@@ -49,8 +49,30 @@ export default {
                 name: 'href',
                 type: 'url',
               },
+              {
+                title: 'Open in new tab',
+                name: 'blank',
+                description: 'Read https://css-tricks.com/use-target_blank/',
+                type: 'boolean'
+              }
             ],
           },
+          {
+            name: 'internalProjectLink',
+            type: 'object',
+            title: 'Internal project link',
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                title: 'Reference',
+                to: [
+                  { type: 'project' },
+                  // other types you may want to link to
+                ]
+              }
+            ]
+          }
         ],
       },
     },
@@ -60,6 +82,16 @@ export default {
     {
       type: 'image',
       options: {hotspot: true},
+      fields: [
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Caption',
+          options: {
+            isHighlighted: true // <-- make this field easily accessible
+          }
+        },
+      ]
     },
   ],
 }
