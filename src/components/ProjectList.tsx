@@ -64,9 +64,10 @@ export default function ProjectList() {
                         
                             
                             <article className="h-full max-w-screen lg:max-w-2xl bg-gray-100 border border-gray-200 hover:border-indigo-400 shadow-xl hover:shadow-2xl rounded-sm">
-                                <a href={`${prefix}/projects/${project.slug?.current}`} 
+                                <a href={`${prefix}/projects/${project.slug?.current}`}
+                                    className=""
                                     key={index}>
-                                    <div className="px-2 pt-2 lg:px-4 lg:pt-4 flex flex-col space-y-4">
+                                    <div className="px-2 pt-2 lg:px-4 lg:pt-4 space-y-4 flex flex-col h-full">
                                 <header>
                                     <h3 className="bg-indigo-100 text-gray-800 px-2 inline-block text-2xl">{project.title}</h3>
                                 </header>
