@@ -63,7 +63,7 @@ export default function ProjectList() {
                     return (
                         
                             
-                            <article className="h-full max-w-screen lg:max-w-2xl bg-gray-100 border border-gray-200 hover:border-indigo-400 shadow-xl hover:shadow-2xl rounded-sm">
+                            <article className="h-full max-w-screen lg:max-w-2xl bg-gray-100 border border-gray-200 hover:border-indigo-200 shadow-xl hover:shadow-2xl rounded-sm">
                                 <a href={`${prefix}/projects/${project.slug?.current}`}
                                     className=""
                                     key={index}>
