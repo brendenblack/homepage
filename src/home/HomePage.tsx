@@ -69,7 +69,7 @@ export default function HomePage() {
                         {projectData.map((project: any, index: number) => {
                             return (
                                 <article key={index} className="border-l-2 border-transparent hover:border-white px-2">
-                                    <a href={`${prefix}/projects/${project.slug}`} >
+                                    <a href={`${prefix}/projects/${project.slug.current}`} >
                                         <h3 className="text-white text-base md:text-lg">{project.title}</h3>
                                         <div className="flex flex-row flex-wrap">
                                             {project.tags.map((tag:string, index: number) => {
