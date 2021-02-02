@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import sanityClient from "../client";
 import BlockContent from '@sanity/block-content-to-react';
+import './ThoughtsPage.css';
 
 export default function ThoughtsPage() {
     
