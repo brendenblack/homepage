@@ -12,6 +12,7 @@ import author from './author'
 import project from './project'
 import disclaimer from './disclaimer'
 import about from './about'
+import page from './page'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -27,6 +28,7 @@ export default createSchema({
     category,
     project,
     disclaimer,
+    page,
     about,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

@@ -4,15 +4,15 @@
 
 @layer base {
     h1 {
-        font-family:  "Julius Sans One";
+        font-family:  "Josefin Sans";
         @apply text-6xl;
     }
     h2 {
-        font-family: "Archivo Narrow";
+        font-family: "Josefin Sans";
         @apply text-3xl;
     }
     h3 {
-        font-family: "Archivo Narrow";
+        font-family: "Josefin Sans";
         @apply text-xl;
     }
 }
@@ -22,9 +22,117 @@
         font-family: "Archivo Narrow";
     }
     .font-primary {
-        font-family: "Julius Sans One";
+        font-family: "Josefin Sans";
+    }
+
+    .text-orange-400 {
+        color: var(--orange-400);
+    }
+    
+    .bg-orange-400 {
+        background-color: var(--orange-400);
+    }
+    
+    .border-orange-400 {
+        border-color: var(--orange-400);
     }
 }
+
+@variants hover {
+    .text-orange-400 {
+        color: var(--orange-400);
+    }
+    
+    .bg-orange-400 {
+        background-color: var(--orange-400);
+    }
+    
+    .border-orange-400 {
+        border-color: var(--orange-400);
+    }
+}
+
+@variants group-hover {
+    .text-orange-400 {
+        color: var(--orange-400);
+    }
+    
+    .bg-orange-400 {
+        background-color: var(--orange-400);
+    }
+    
+    .border-orange-400 {
+        border-color: var(--orange-400);
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* xs  (max-width: 576px) */
+.container {
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+@media (min-width: 577px) {
+    .container {
+        max-width: 540px;
+        width: 100%;
+        margin: auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* md */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        width: 100%;
+        margin: auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* lg */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+        width: 100%;
+        margin: auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .statistics {
+        display: block;
+    }
+}
+
+/* xl */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+        width: 100%;
+        margin: auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* xxl */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+        width: 100%;
+        margin: auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
 
 .prose img {
     margin-left: auto;
@@ -37,17 +145,28 @@
     font-family: "Staatliches", "Open Sans", sans-serif;
 }
 
+.home-font-branding {
+    font-family: 'Josefin Sans', 'Open Sans', sans-serif;
+}
+
 .font-secondary {
     font-family: "Montserrat", "News Cycle", sans-serif;
 }
 
 .page {
-    margin-top: 56px;
+    margin-top: 60px;
     flex-grow: 1;
+}
+
+.page-inner { 
+    padding-top: 2rem;
 }
 
 /* https://tailwindcss.com/docs/customizing-colors#color-palette-reference */
 :root {
+    --cool-baby: #433737;
+    --dark-baby: #2b2b2b;
+
     --rose-50: #fff1f2;
     --rose-100: #ffe4e6;
     --rose-200: #fecdd3;
@@ -289,4 +408,6 @@
     --blue-gray-700: #334155;
     --blue-gray-800: #1e293b;
     --blue-gray-900: #0f172a;
-  }
+}
+
+
