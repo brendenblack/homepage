@@ -1,0 +1,27 @@
+.thoughts li:after {
+    color: var(--gray-400);
+  
+    content: "\00a0\00a0|";
+}
+
+.thoughts li:last-child:after {
+    content : ""
+}
+
+.thoughts li:before {
+    content: "\00a0\00a0";
+}
+
+.thoughts li:first-child:before {
+    content: "";
+}
+
+.anchored-section {
+    position: relative;
+}
+
+.anchored-section .anchor {
+    position: absolute;
+    left: 0px;
+    top: -60px;
+}

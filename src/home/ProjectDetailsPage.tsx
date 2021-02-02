@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
 import sanityClient from '../client';
-import Loading from './Loading';
-import { prefix } from './routes';
-import ProjectDescription from './ProjectDescription';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Loading from '../components/Loading';
+import ProjectDescription from '../components/ProjectDescription';
+import { prefix } from './homeRoutes';
 
-export default function Project() {
+
+export default function ProjectDetailsPage() {
     const { slug } = useParams<{ slug: string }>();
     const [ project, setProject ] = useState<any|null|undefined>(null);
     const [ isLoading, setLoading ] = useState(false);
@@ -50,26 +51,27 @@ export default function Project() {
         return <Loading />
     } else if (project) {
         return (
-            <div className="page pt-8 lg:pt-16 px-8 lg:px-32 bg-gray-200">
+            <div className="page">
+                <div className="container py-8">
                 <header className="">
-                    <h1 className="text-4xl lg:text-6xl font-branding text-gray-800">{project.title}</h1>
-                    <h2 className="text-2xl lg:text-3xl font-branding text-gray-600">{project.place}</h2>
+                    <h1 className="text-4xl lg:text-6xl home-font-branding text-gray-800">{project.title}</h1>
+                    <h2 className="text-2xl lg:text-3xl home-font-branding text-gray-600">{project.place}</h2>
                 </header>
-                <main className="max-w-4xl">
-            
+                <main className="">
                     {project.disclaimer && 
-                        <aside className="bg-blue-100 border-solid border-2 border-blue-200 rounded-sm p-2 my-4 text-gray-600 text-sm">
+                        <aside className="bg-blue-50 border-solid border-2 border-blue-100 rounded-sm p-2 mt-4 text-gray-700 text-sm md:text-base">
                             {project.disclaimer.description}
                         </aside>
                     }
-                    <article className="prose max-w-4xl">
+                    <article className="prose max-w-3xl mx-auto">
                         {/* <BlockContent blocks={project.description} projectId={process.env.REACT_APP_PROJECT_ID} dataset="production"  /> */}
                         <ProjectDescription blocks={project.description} />
                     </article>
                     <footer className="flex justify-end">
-                        <a href={`${prefix}/projects`} className="text-indigo-500 text-lg py-6 font-bold" >Return to projects</a>
+                        <a href={`${prefix}/projects`} className="text-orange-400 py-6 home-font-brand" >Return to projects</a>
                     </footer>
                 </main>
+                </div>
             </div>
         );
     } else if (error) {
@@ -88,6 +90,4 @@ export default function Project() {
         // TODO: I'm not really sure why this condition ever happens
         return <div className="page bg-gray-200"></div>
     }
-
-    
 }
