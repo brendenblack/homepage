@@ -6,7 +6,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import office from '../images/office-5594741.svg';
 
 const defaultPageData: any = { 
-    heading: "Software is eating the world",
+    heading: '',
     summary: '',
 };
 
@@ -53,9 +53,9 @@ export default function HomePage() {
 
                     <main className="p-8">
                         <h1 className="home-font-branding text-6xl text-gray-900">{pageData?.heading ?? ''}</h1>
-                        <p className="home-font-branding text-xl text-gray-800">
+                        <div className="home-font-branding text-xl text-gray-800 mt-8 prose">
                             <BlockContent blocks={pageData?.summary ?? []} projectId={process.env.REACT_APP_PROJECT_ID} dataset={process.env.REACT_APP_SANITY_DATASET} />
-                        </p>
+                        </div>
                     </main>
                 </div>
             </section>
